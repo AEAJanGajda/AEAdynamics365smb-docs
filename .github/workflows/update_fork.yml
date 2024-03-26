@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check repo
+        run: pwd
       - name: Add Upstream
         run: git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs || true
 
