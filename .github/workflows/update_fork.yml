@@ -2,7 +2,7 @@ name: Update Fork
 
 on:
   schedule:
-    - cron: '36 11 * * 2'
+    - cron: '39 11 * * 2'
 
 jobs:
   update:
