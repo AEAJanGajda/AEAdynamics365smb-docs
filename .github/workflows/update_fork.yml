@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Add Upstream
-        run: git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git || true
+        run: git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs || true
 
       - name: Fetch changes
         run: git fetch upstream
