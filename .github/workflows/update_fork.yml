@@ -3,6 +3,7 @@ name: Update Fork
 on:
   schedule:
     - cron: '39 11 * * 2'
+  workflow_dispatch:
 
 jobs:
   update:
