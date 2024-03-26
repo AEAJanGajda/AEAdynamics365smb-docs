@@ -2,7 +2,7 @@ name: Update Fork
 
 on:
   schedule:
-    - cron: '39 11 * * 2'
+    - cron: '0 2 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -12,7 +12,11 @@ jobs:
     steps:
       - name: Check repo
         run: pwd
-      - name: Add Upstream
+        
+      - name: Change directory
+        run: cd https://github.com/AEAJanGajda/AEAdynamics365smb-docs
+        
+      - name: Add upstream
         run: git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs || true
 
       - name: Fetch changes
