@@ -12,9 +12,10 @@ jobs:
     steps:
       - name: Check repo
         run: pwd
+             ls -a
         
       - name: Add upstream
-        run: git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs
+        run: git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git
 
       - name: Fetch changes
         run: git fetch upstream
