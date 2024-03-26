@@ -13,14 +13,8 @@ jobs:
       - name: Check repo
         run: pwd
         
-      - name: Change directory
-        run: cd https://github.com/AEAJanGajda/AEAdynamics365smb-docs.git
-
-      - name: Check repo 2
-        run: pwd
-        
       - name: Add upstream
-        run: git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git || true
+        run: git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs
 
       - name: Fetch changes
         run: git fetch upstream
