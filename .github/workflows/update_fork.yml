@@ -16,7 +16,7 @@ jobs:
       - name: Fetch changes
         run: |
           git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git || true
-          git fetch upstream
+          git fetch upstream main
           
       - name: Merge changes
         run: |
