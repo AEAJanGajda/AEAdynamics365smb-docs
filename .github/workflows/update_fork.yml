@@ -10,26 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check if in a Git repository
-        run: test -d .git || { echo "Not in a Git repository"; exit 1; }
-
-      - name: Check if upstream remote exists
-        run: git remote -v | grep upstream || echo "Upstream remote not found"
-        
-      - name: Add upstream if not exists
-        run: |
-          if ! git remote -v | grep -q upstream; then
-            git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git
-          fi
-
+      - name: Checkout
+        uses: actions/checkout@v2
+      
       - name: Fetch changes
-        run: git fetch upstream
-
+        run: |
+          git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git
+          git fetch upstream
+          
       - name: Merge changes
-        run: git merge upstream/main || exit 0
-        
-      - name: Push changes
-        run: git push origin main
+        run: |
+          git checkout main  # or the branch you want to sync
+          git merge upstream/main  # or the branch you want to sync from upstream
+          git push origin main  # or the branch you want to push to
+
 
 
     
