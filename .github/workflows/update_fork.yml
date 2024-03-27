@@ -14,7 +14,10 @@ jobs:
         run: ls -a
         
       - name: Add upstream
-        run: git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git
+        run: |
+          if ! git remote -v | grep -q upstream; then
+            git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git
+          fi
 
       - name: Fetch changes
         run: git fetch upstream
