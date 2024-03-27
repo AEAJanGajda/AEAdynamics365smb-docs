@@ -3,7 +3,6 @@ name: Update Fork
 on:
   schedule:
     - cron: '0 2 * * 1'
-  workflow_dispatch:
 
 jobs:
   update:
@@ -14,15 +13,13 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Fetch changes
-        run: |
-          git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git || true
-          git fetch upstream main
+        run: git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git || true
+             git fetch upstream main
           
       - name: Merge changes
-        run: |
-          git checkout main
-          git merge upstream/main || exit 0
-          git push origin main
+        run: git checkout main
+             git merge upstream/main || exit 0
+             git push origin main
 
 
 
