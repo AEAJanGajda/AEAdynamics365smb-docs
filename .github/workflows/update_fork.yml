@@ -10,10 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check repo
-        run: ls -a
+      - name: Check if in a Git repository
+        run: test -d .git || { echo "Not in a Git repository"; exit 1; }
+
+      - name: Check if upstream remote exists
+        run: git remote -v | grep upstream || echo "Upstream remote not found"
         
-      - name: Add upstream
+      - name: Add upstream if not exists
         run: |
           if ! git remote -v | grep -q upstream; then
             git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git
