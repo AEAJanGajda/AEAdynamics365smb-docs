@@ -20,13 +20,14 @@ jobs:
       
       - name: Fetch changes
         run: |
+            git pull --unshallow
             git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git || true
             git fetch upstream main
           
       - name: Merge changes
         run: |
             git checkout main
-            git merge --allow-unrelated-histories upstream/main || exit 0
+            git merge upstream/main || exit 0
             git push origin main
 
 
