@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Configure git
+        run: |
+          git config --global user.name "Jan Gajda"
+          git config --global user.email "jan.gajda@aricoma.com"
       
       - name: Fetch changes
         run: |
