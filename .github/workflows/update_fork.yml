@@ -26,7 +26,7 @@ jobs:
           
       - name: Merge changes
         run: |
-            git checkout origin main
+            git checkout origin/main
             git merge upstream/main || exit 0
             git push origin main
 
