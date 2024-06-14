@@ -1,0 +1,37 @@
+name: Update Fork
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * 1'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+        
+      - name: Configure git
+        run: |
+          git config --global user.name "Jan Gajda"
+          git config --global user.email "jan.gajda@aricoma.com"
+      
+      - name: Fetch changes
+        run: |
+            git pull --unshallow
+            git remote add upstream https://github.com/MicrosoftDocs/dynamics365smb-docs.git || true
+            git fetch upstream main
+          
+      - name: Merge changes
+        run: |
+            git checkout main
+            git merge upstream/main || exit 0
+            git push origin main
+
+
+
+    
