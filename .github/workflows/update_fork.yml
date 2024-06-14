@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: main
         
       - name: Configure git
         run: |
@@ -26,7 +28,7 @@ jobs:
           
       - name: Merge changes
         run: |
-            git checkout origin/main
+            git checkout main
             git merge upstream/main || exit 0
             git push origin main
 
